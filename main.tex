@@ -1,0 +1,109 @@
+\documentclass[11pt,a4paper,oneside,english]{book} 
+
+\usepackage[a4paper]{geometry}
+\geometry{verbose, tmargin=4cm, bmargin=4cm, lmargin=3cm, rmargin=3cm, headsep=0.5cm, footskip=1cm}
+\usepackage[latin1]{inputenc}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, automata, arrows, quotes, angles, calc, trees, chains,	decorations, 
+shapes, matrix}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\setlength{\headheight}{14.5pt}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{latexsym}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+
+\usepackage{setspace}
+
+\usepackage{hyperref}  
+\hypersetup{
+	pdftitle={Drawing examples in LaTeX},
+	pdfauthor={Giuseppe Silano},
+	pdfsubject={The aim of this file is to help people interested in learning how to use LaTeX for 
+	drawing. In particular, already structured examples can help through the provided source code 
+	on how to use the code for its own purposes.},
+	pdfkeywords={LaTeX, open-source, source code, tikzpicture, repository}}           
+
+\begin{document}
+
+\frontmatter
+
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thesection}{\arabic{section}}  
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\setcounter{chapter}{1}
+
+\title{
+	\textbf{\huge{Drawing examples in \LaTeX}}
+	\\
+	\vspace{1cm}
+}
+	
+\author{\textsc{Giuseppe Silano}
+\date{\today}
+} 
+
+\maketitle
+
+\mainmatter
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+\setcounter{page}{0}
+\setcounter{chapter}{1}
+
+\onehalfspacing
+
+\chapter*{Introduction}
+
+\section*{The aim of document}
+\label{sec:aimOfTheDocument}
+
+The aim of this file is to help people interested in learning how to use \LaTeX~for drawing. In 
+particular, already structured examples will help to develop one's own through the source code 
+provided. The draws have been made during my research activity as PhD candidate.
+
+The file is divided into four main chapters (parts):
+
+\begin{itemize}
+	
+	\item \textit{Block Diagrams}: this part contains block diagrams;
+	
+	\item \textit{Matlab Plots}: this part contains MATLAB\textsuperscript{\textregistered} and the 
+	MATLAB package \textit{matlab2tikz}\footnote{It is available at the 
+	link~\url{https://github.com/matlab2tikz/matlab2tikz}}.
+	
+	\item \textit{Drawing on Images}: this part contains draws made on image files;
+	
+	\item \textit{Various}: this part contains several drawings that do not belong to the sections 
+	listed above.
+	
+\end{itemize}
+
+
+\mainmatter
+
+\pagenumbering{arabic}
+
+\onehalfspacing
+
+\input{blockDiagrams}
+
+\end{document}
