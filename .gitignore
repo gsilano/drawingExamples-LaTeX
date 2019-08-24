@@ -22,15 +22,15 @@
 # *.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
-.pdf
+main.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
-*.bcf
+#*.bcf
 *.blg
-*-blx.aux
-*-blx.bib
-*.run.xml
+#*-blx.aux
+#*-blx.bib
+#*.run.xml
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
