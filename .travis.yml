@@ -1,14 +1,12 @@
-install:
- - source ./texlive_install.sh
- 
-cache:
-  directories:
-    - /tmp/texlive
-    - $HOME/.texlive
-    
-script:
-# Prefix command with travis_wait x so it times out after 3 mins
-- travis_wait 3 pdflatex main.tex
+sudo: required
+language: generic
+services: docker
 
+script:
+  # We use the docker image from https://hub.docker.com/r/dxjoke/tectonic-docker/
+  - docker pull dxjoke/tectonic-docker
+   - docker run --mount src=$TRAVIS_BUILD_DIR,target=/usr/src/tex,type=bind dxjoke/tectonic-docker
+  /bin/sh -c "tectonic --keep-intermediates --reruns 0 main.tex; biber main; tectonic main.tex"
+  
 notifications:
   email: false
