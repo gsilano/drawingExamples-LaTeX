@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/gsilano/drawingExample-LaTeX.svg?branch=master)](https://travis-ci.org/gsilano/drawingExample-LaTeX)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
