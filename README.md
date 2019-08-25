@@ -2,12 +2,12 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 
-# Drawing examples in LaTeX
-This repository contains a collection of examples made by using the `tikzpicture` LaTeX package. The document file has to be meant as a list of examples to help students, researchers and developers for drawings schemes, MATLAB plots, etc., for their own purposes.
+# Drawing examples in LaTeX 
+This repository contains a collection of examples created using the `tikzpicture` LaTeX package. The document file has to be meant as a list of examples to help students, researchers, and developers to draw schemes, MATLAB plots, etc., for their own purposes.
 
 # Content of the package
 
-The packages contains the tex files (them content is described in the `mail.pdf` file) and the necessary pdf, images and txt files to build the code.
+The package contains the TeX files (the content is described in the `main.pdf` file) and the necessary pdf, images and tet files to build the code.
 
 # Pull request template
 
