@@ -6,6 +6,13 @@
 
 \usepackage{tikz}
 \usepackage{blox}
+\usepackage{pgfplots}
+\usepackage{subfigure}
+\usepackage{xcolor,colortbl}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}m{#1}}
 \usetikzlibrary{positioning, automata, arrows, quotes, angles, calc, trees, chains,	
 decorations.pathreplacing, decorations.pathmorphing, shapes, matrix}
 
@@ -68,14 +75,16 @@ decorations.pathreplacing, decorations.pathmorphing, shapes, matrix}
 \tableofcontents
 
 \setcounter{page}{0}
-\setcounter{chapter}{1}
+\setcounter{chapter}{0}
 
 \onehalfspacing
 
 \chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
 
 \section*{The aim of document}
 \label{sec:aimOfTheDocument}
+\addcontentsline{toc}{section}{The aim of document}
 
 The aim of this file is to help people interested in learning how to use \LaTeX~for drawing. In 
 particular, already structured examples will help to develop one's own through the source code 
@@ -106,5 +115,6 @@ The file is divided into four main chapters (parts):
 \onehalfspacing
 
 \input{blockDiagrams}
+\input{various}
 
 \end{document}
