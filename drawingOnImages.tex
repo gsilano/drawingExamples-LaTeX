@@ -264,20 +264,69 @@
 			\draw[-latex] (0.36,-0.25) coordinate -- (0.36,0.35) coordinate;
 			\draw (0.85,-0.7225) node[above]{$\omega_4$};
 			
-			\draw[latex-] (-2.9,-2.5) arc (-25:-110:0.30cm) node[left]{$\psi$};
-			\draw[latex-] (-2.475,-5.9) arc (105:-70:0.30cm);
-			\draw (-2.15,-6.15) node[right]{$\theta$};
-			\draw[latex-] (-5.4,-4.9) arc (45:-130:0.30cm);
-			\draw (-5.6,-5.3) node[below right]{$\phi$};
-			
-			\draw[-latex] (-3.05,-5) coordinate -- (-3.05,-2) coordinate node[anchor=east]{$e_{z}$};
-			\draw[-latex] (-3.05,-5) coordinate -- (-6.05,-5.275) coordinate node[above right]{$e_{x}$};
-			\draw[-latex] (-3.05,-5) coordinate -- (-2.25,-6.725) coordinate node[below left]{$e_{y}$};
-			\draw (-3.05,-5) node[right]{$O_{FI}$};
+			%Inertial reference system
+			\draw[-latex] (-3.05,-3.5) coordinate -- (-3.05,-2) coordinate node[anchor=east]{$Z$};
+			\draw[-latex] (-3.05,-3.5) coordinate -- (-4.05,-3.7125) coordinate node[above 
+			left]{$X$};
+			\draw[-latex] (-3.05,-3.5) coordinate -- (-2.25,-3.725) coordinate node[below 
+			left]{$Y$};
+			\draw (-3.05,-3.4) node[right]{$O_{FI}$};
 			
 			\end{tikzpicture}
 	\end{center}
 \end{figure} 
+
+\section{Example \thedrawingOnImages}
+\stepcounter{drawingOnImages}
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{1}{
+			\begin{tikzpicture}
+			
+			%Angles body frame
+			\draw[latex-] (0.25,2.3) arc (-25:-110:0.30cm) node[above left]{$\psi$};
+			\draw[latex-] (-2.4,0.1) arc (45:-130:0.30cm);
+			\draw (-2.3,-0.3) node[below]{$\varphi$};
+			\draw[latex-] (0.525,-0.9) arc (105:-70:0.30cm);
+			\draw (0.85,-1.15) node[right]{$\theta$};
+			
+			%Reference system body frame
+			\draw[-latex] (0.05,0) coordinate -- (0.05,3) coordinate node[anchor=west]{$e_{z}$};
+			\draw[-latex] (0.05,0) coordinate -- (-3.05,-0.275) coordinate node[below 
+			left]{$e_{x}$};
+			\draw[-latex] (0.05,0) coordinate -- (0.75,-1.725) coordinate node[below left]{$e_{y}$};
+			\draw (0.05,0.9) node[below right]{$O_{ABC}$};
+			
+			%Hexarotor
+			\node (esacottero) at (0,0) [text 
+			centered]{\includegraphics[scale=0.65]{figure/KestrelEDS-Quadcopter_4.png}};
+			
+			%Omage values (propellers angular velocities)
+			\draw[-latex] (-2.05,0.575) arc (55:-15:0.35cm);
+			\draw[latex-] (-0.1,1.625) arc (-25:-120:0.30cm);
+			\draw[-latex] (2.17,0.97) arc (55:-15:0.35cm);
+			\draw[latex-] (0.6225,-0.1725) arc (-25:-120:0.30cm);
+			
+			%Froce vectors
+			\draw[-latex] (-2.065,0.25) coordinate -- (-2.065,0.75) node[left]{$\Omega_1$};
+			\draw[-latex] (-0.29,1.35) coordinate -- (-0.29,1.85) node[left]{$\Omega_2$};
+			\draw[-latex] (2.135,0.675) coordinate -- (2.135,1.175) node[right]{$\Omega_3$};
+			\draw[-latex] (0.36,-0.45) coordinate -- (0.36,0.05) coordinate;
+			\draw (0.85,-0.5225) node[above]{$\Omega_4$};
+			
+			%Inertial reference system
+			\draw[-latex] (-3.05,-3.5) coordinate -- (-3.05,-2) coordinate node[anchor=east]{$Z$};
+			\draw[-latex] (-3.05,-3.5) coordinate -- (-4.05,-3.7125) coordinate node[above 
+			left]{$X$};
+			\draw[-latex] (-3.05,-3.5) coordinate -- (-2.25,-3.725) coordinate node[below 
+			left]{$Y$};
+			\draw (-3.05,-3.4) node[right]{$O_{FI}$};
+			
+			\end{tikzpicture}
+		}
+	\end{center}
+\end{figure}
 
 \newpage
 

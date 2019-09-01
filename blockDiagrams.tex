@@ -1600,6 +1600,51 @@
 	
 \end{figure}
 
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{1}{
+			\begin{tikzpicture}
+			
+			%Nodes
+			\draw (0,1.5) ellipse (1.8cm and 0.5cm) node[] {/hovering\_example};
+			\draw (5,3) ellipse (2.5cm and 0.6cm);
+			\draw (5.7,3) node[text width=15em]{/position\_controller\_node};
+			\draw (0,5.5) ellipse (0.75cm and 0.5cm) node[]{/gazebo};
+			
+			%Topics
+			\node (commandTrajectory) at (5,1.5) [draw, text centered, rectangle, minimum 
+			height=1cm]{/command/trajectory};
+			\node (odometrySensor) at (0,3) [draw, rectangle, minimum height=1cm, text centered, 
+			minimum width=2cm]{/odometry};
+			\node (motorSpeed) at (10.6,3) [draw, rectangle, minimum height=1cm, text 
+			centered]{/command/motor\_speed};
+			
+			%Links
+			\draw[-latex] (1.8,1.5) coordinate -- (commandTrajectory);
+			\draw[-latex] (odometrySensor) -- (2.5,3) coordinate;
+			\draw[-latex] (7.5,3) coordinate -- (motorSpeed.west);
+			\draw[-latex] (commandTrajectory) -- (5,2.4) coordinate;
+			\draw[-latex] (0,5) coordinate -- (odometrySensor.north);
+			\draw[-latex] (motorSpeed.north) .. controls (9,5.25) .. (0.755,5.5);
+			
+			%Crazyflie 2.0 box
+			\node (crazyflie) at (5.63,2.7) [draw, rectangle, line width=1.25 pt, minimum 
+			height=3.8cm, minimum width=15cm]{};
+			\draw (5,4.15) coordinate node[]{\textbf{crazyflie2}};
+			
+			%Rettangolo che raffigura gazebo
+			\node (gazeboBox) at (0,5.7) [draw, rectangle, line width=1.25 pt, minimum 
+			height=1.8cm, minimum width=2cm]{};
+			\draw (0, 6.25) coordinate node[]{\textbf{gazebo}};
+			
+			\end{tikzpicture}
+		}
+	\end{center}
+\end{figure} 
+
 \newpage
 
 \section{Example \theblockDiagram}
@@ -1607,6 +1652,7 @@
 
 \begin{figure}[h]
 	\begin{center}
+		\scalebox{0.75}{
 		\begin{tikzpicture}
 		
 		%Nodes
@@ -1715,6 +1761,234 @@
 		\draw (0.75,-11.5) coordinate node[above left]{$+$};
 		\draw (0.75,-11.5) coordinate node[below right]{$+$};
 		\end{tikzpicture}
+	}
 	\end{center}
 	
 \end{figure}
+
+
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}
+		
+		%Layer architecture
+		\node (user) at (0,0) [rectangle, draw, rounded corners=1.25pt, text centered, minimum 
+		width=2cm, minimum height=0.5cm]{User};
+		
+		\node (application) at (0,-1) [rectangle, draw, rounded corners=1.25pt, text centered, 
+		minimum width=2cm, minimum height=0.5cm]{Application};
+		
+		\node (middleware) at (0,-2) [rectangle, draw, rounded corners=1.25pt, text centered, 
+		minimum width=2cm, fill=red!25, minimum height=0.5cm]{Middleware};
+		
+		\node (OS) at (0,-3) [rectangle, draw, rounded corners=1.25pt, text centered, minimum 
+		width=2cm, minimum height=0.5cm]{OS};
+		
+		\node (hardware) at (0,-4) [rectangle, draw, rounded corners=1.25pt, text centered, minimum 
+		width=2cm, minimum height=0.5cm]{Hardware};
+		
+		%RLinks
+		\draw[-latex] (-0.5, -0.25) to (-0.5,-0.73);
+		\draw[latex-] (0.5, -0.25) to (0.5,-0.73);
+		
+		\draw[-latex] (-0.5,-1.28) to (-0.5,-1.75);
+		\draw[latex-] (0.5,-1.28) to (0.5,-1.75);
+		
+		\draw[-latex] (-0.5,-2.25) to (-0.5,-2.75);
+		\draw[latex-] (0.5,-2.25) to (0.5,-2.75);
+		
+		\draw[-latex] (-0.5,-3.25) to (-0.5,-3.75);
+		\draw[latex-] (0.5,-3.25) to (0.5,-3.75);
+		
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+\newpage
+
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{0.9}{
+			\begin{tikzpicture}
+			
+			%Rectangles
+			\node (launchFile) at (0,0) [rectangle, draw, minimum width=6.4cm, minimum 
+			height=1cm]{crazyflie2\_hovering\_example.launch};
+			\node (spawnMav) at (0,-1.5) [rectangle, draw, minimum width=6.4cm, minimum 
+			height=1cm]{spawn\_mav\_crazyflie.launch};
+			\node (crazyflieBase) at (0,-3) [rectangle, draw, minimum width=6.4cm, minimum 
+			height=1cm]{crazyflie\_base.xacro};
+			\node (componentSnippets) at (0,-4.5) [rectangle, draw, minimum width=6.4cm, minimum 
+			height=1cm]{component\_snippets.xacro};
+			\node (crazyflieXacro) at (0,-6) [rectangle, draw, minimum width=6.4cm, minimum 
+			height=1cm]{crazyflie2.xacro};
+			\node (crazyflieDae) at (0,-7.5) [rectangle, draw, minimum width=6.4cm, minimum 
+			height=1cm]{crazyflie2.dae};
+			\node (gazebo) at (0,-9) [rectangle, draw, minimum width=6.4cm, minimum 
+			height=1cm]{Gazebo};
+			
+			%Links among blocks
+			\draw[-latex] (launchFile) -- (spawnMav);
+			\draw[-latex] (spawnMav) -- (crazyflieBase);
+			\draw[-latex] (crazyflieBase) -- (componentSnippets);
+			\draw[-latex] (componentSnippets) -- (crazyflieXacro);
+			\draw[-latex] (crazyflieXacro) -- (crazyflieDae);
+			\draw[-latex] (crazyflieDae) -- (gazebo);
+			
+			%Curly brackets
+			\draw [decorate,decoration={brace,amplitude=10pt,raise=4pt},yshift=0pt]
+			(3.3,-1) -- (3.3,-5) node [black,midway,xshift=2.2cm, text centered, text width=10em] 
+			{\footnotesize
+				Simulate the on-board sensors and configure simulation features};
+			\draw [decorate,decoration={brace,amplitude=10pt, mirror, raise=4pt},yshift=0pt]
+			(-3.3,-5.5) -- (-3.3,-8) node [black,midway,xshift=-2cm, text width=10em, text 
+			centered] {\footnotesize
+				Simulate dynamics and geometry};
+			\end{tikzpicture}
+		}
+	\end{center}
+\end{figure}
+
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{1}{
+			\begin{tikzpicture}
+			
+			%Scheme blocks
+			\node (outerLoop) at (-0.25,0) [draw, rectangle, minimum width=1cm,	minimum 
+			height=1.5cm, text centered, text width=5em]{Outer loop\\controller};
+			\node (innerController) at (2.6,-0.75) [draw, rectangle, minimum width=1cm, 
+			minimum height=1.5cm, text centered, text width=5em]{Inner loop\\controller};
+			\node (controlMixer) at (5.9,0) [draw, rectangle, minimum width=1cm, minimum 
+			height=1.5cm, text centered, text width=5em]{Control\\Mixer};
+			\node (bebopModel) at (10,0) [draw, rectangle, minimum width=1cm, minimum 
+			height=1.5cm, text centered, text width=5em]{Aircraft\\+ \\ Motors};
+			
+			%Links between blocks
+			\draw[-latex] ($ (outerLoop.160) - (1,0) $) -- node[above]{$\xi_r$} (outerLoop.160);
+			\draw[-latex] ($ (outerLoop.200) - (1,0) $) -- node[above]{$\psi_r$} (outerLoop.200);
+			\draw[fill=black] (-1.88,-0.4) arc(-180:180:0.03);
+			
+			\draw[-] (-1.85,-0.425) -- (-1.85, -1.155) -- (-0.35, -1.155);
+			\draw[-] (-0.35,-1.155) arc (180:0:0.1);
+			\draw[-latex]($ (innerController.200) - (1.65,0) $) -- node[below]{$\psi_r$} 
+			(innerController.200);
+			
+			\draw[-latex] ($ (outerLoop.south) - (0,0.75) $) node[left]{$\xi_d$} -- 
+			(outerLoop.south);
+			\draw[-latex] (outerLoop.20) node[above right]{$u_T$} -- (controlMixer.160);
+			\draw[-latex] ($ (innerController.160) - (0.67,0) $) node[above right]{$\varphi_r$} 
+			node[below right]{$\theta_r$} -- (innerController.160); 
+			\draw[-latex] ($ (controlMixer.201) - (1.11,0) $) -- node[above]{$u_\varphi$, 
+			$u_\theta$} node[below]{$u_\psi$} (controlMixer.201);
+			\draw[-latex] ($ (innerController.south) - (0,0.45) $) node[left]{$\eta_d$} -- 
+			(innerController.south);
+			\draw[-] ($ (innerController.south) - (0,0.45) $) -- ++(9.25,0) --  ++(0,1.58);
+			\draw[fill=black] (11.83,-0.39) arc(-180:180:0.02);
+			
+			
+			\draw[-] ($ (outerLoop.south) - (0,0.5) $) -- ++(0,-0.87) -- ++	(11.5,0) --  
+			++(0,1.675);
+			\draw[-] (11.245,-0.45) arc(-90:90:0.1) -- ++(0,0.64);
+			\draw[fill=black] (11.23,0.40) arc(-180:180:0.02);
+			
+			\draw[-latex] (controlMixer) -- node[above]{$\Omega_{1}^\mathrm{ref}$, 
+			$\Omega_{2}^\mathrm{ref}$} node[below]{$\Omega_{3}^\mathrm{ref}$, 
+			$\Omega_{4}^\mathrm{ref}$} (bebopModel);
+			\draw[-latex] (bebopModel.20) -- node[above]{$\xi_d$} ($(bebopModel.20) + 
+			(1.2,0)$);
+			\draw[-latex] (bebopModel.-20) --  node[above]{$\eta_d$} ($(bebopModel.-20) + 
+			(1.2,0) $);
+			
+			\end{tikzpicture}
+		}
+	\end{center}
+\end{figure}
+
+\newpage
+
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}[>=stealth',shorten >=1pt,node distance=2cm,on grid,auto] 
+		
+		%Automata states
+		\node[state] (q_1)   {$x_1$}; 
+		\node[state] (q_2) [below left=of q_1] {$x_2$}; 
+		\node[state] (q_3) [below right=of q_1] {$x_3$};
+		\node[state] (q_4) [below=of q_2] {$x_4$};
+		
+		%Paths
+		\path[->] 
+		(q_1) edge              node        {$\sigma_1$}  (q_3)
+		edge              node [swap] {$\sigma_1$}  (q_2)
+		(q_2) edge [bend left]  node [swap] {$\sigma_2$}  (q_3)
+		edge [loop left]  node        {$\sigma_1$}  ()
+		edge [bend right] node [swap] {$\sigma_2$}  (q_4)
+		(q_3) edge [bend left]  node        {$\sigma_1$}  (q_2)
+		edge [loop right] node        {$\sigma_2$}  ()
+		(q_4) edge [bend right] node        {$\sigma_1$}  (q_2)
+		edge [loop right] node        {$\sigma_1$}  ();
+		
+		%Automata states
+		\node[state] (q_5)  at (6,0)  {$x_1$}; 
+		\node[state] (q_6) [below left=of q_5] {$x_2$}; 
+		\node[state] (q_7) [below right=of q_5] {$x_3$};
+		
+		%Paths
+		\path[->] 
+		(q_5) edge              node        {$\sigma_1$}  (q_7)
+		edge              node [swap] {$\sigma_1$}  (q_6)
+		(q_6) edge [bend left]  node [swap] {$\sigma_2$}  (q_7)
+		edge [loop left]  node        {$\sigma_1$}  ()
+		edge [loop below] node        {$\sigma_2$}  ()
+		(q_7) edge [bend left]  node        {$\sigma_1$}  (q_6)
+		edge [loop right] node        {$\sigma_2$}  ();
+		
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{1}{
+			\begin{tikzpicture}
+			[>=stealth',shorten >=1pt,node distance=2cm,on grid,auto] 
+			
+			%Automata states
+			\node[state] (q_0) {$p,\,r$}; 
+			\node[state] (q_1) [above right= of q_0] {$r$}; 
+			\node[state] (q_2) [above left= of q_0] {$p,\,q$};
+			\node[state] (q_3) [below of= q_1] {$p$};
+			\node[state] (q_4) [below left= of q_0] {$p$};
+			\node[state] (q_5) [below left of= q_3] {$p,\,q$};
+			
+			\path[->] 
+			(q_0) edge [bend right] node        {} (q_1)
+			edge [bend right] node [swap] {} (q_2)
+			edge [bend right] node        {} (q_4)
+			(q_1) edge [bend left]  node [swap] {} (q_3)
+			(q_2) edge [bend right]  node [swap] {} (q_0)
+			(q_3) edge [bend left]  node        {} (q_5)
+			edge [bend left]  node [swap] {} (q_0)
+			(q_5) edge [bend left]  node [swap] {} (q_0)
+			(q_4) edge [bend right] node [swap] {} (q_5);
+			
+			\end{tikzpicture}
+		}
+	\end{center}
+\end{figure}	

@@ -1277,9 +1277,7 @@
 	
 \end{figure}
 
-
 \newpage
-
 
 \section{Example \thevarious}
 \stepcounter{various}
@@ -1342,54 +1340,133 @@
 	
 \end{figure}
 
+
 \section{Example \thevarious}
 \stepcounter{various}
 
 \begin{figure}[h]
 	\begin{center}
-		\scalebox{1}{
+	\begin{tikzpicture}
+	
+	\pgfmathsetseed{2};
+	%Features inside the ROI
+	\fillrandomly{2}{2}{0.1}{100};
+	\node at (1,1) [circle, line width=1.0pt, draw=cyan, text centered, minimum size=3cm]{};
+	%Features outside the ROI
+	\fillrandomly{6}{3}{0.1}{50};
+	
+	%Legend
+	\node at (-2.5,3.5) [draw, rectangle, line width=1.25pt, rounded corners=5pt, text width=5em, 
+	draw=cyan, text centered]{Region of \\interest};
+	\node at (-2.5,2) [draw, rectangle, line width=1.25pt, rounded corners=5pt, text width=5em, 
+	draw=yellow, text centered]{Center of \\mass};
+	\node at (-2.5,0.5) [draw, rectangle, line width=1.25pt, rounded corners=5pt, text width=5em, 
+	draw=red, text centered]{CAMShift \\vector};
+	
+	\node at (1,1) [circle, line width=1.0pt, draw=cyan, text centered]{};
+	\draw[-, cyan, line width=1.0pt] (1,0.75) coordinate -- (1,1.25) coordinate;
+	\draw[-, cyan, line width=1.0pt] (0.75,1) coordinate -- (1.25,1) coordinate;
+	
+	\node at (0.65,0.75) [circle, line width=1.0pt, draw=yellow, text centered]{};
+	\draw[-, yellow, line width=1.0pt] (0.65,0.5) coordinate -- (0.65,1.0) coordinate;
+	\draw[-, yellow, line width=1.0pt] (0.40,0.75) coordinate -- (0.90,0.75) coordinate;
+	\draw[-latex, red, line width=1.0pt] (1,1) coordinate -- (0.65,0.75) coordinate;
+	
+	\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+\newpage
+
+\section{Example \thevarious}
+\stepcounter{various}
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{0.8}{
 			\begin{tikzpicture}
 			
-			%Angles body frame
-			\draw[latex-] (0.25,2.3) arc (-25:-110:0.30cm) node[above left]{$\psi$};
-			\draw[latex-] (-2.4,0.1) arc (45:-130:0.30cm);
-			\draw (-2.3,-0.3) node[below]{$\varphi$};
-			\draw[latex-] (0.525,-0.9) arc (105:-70:0.30cm);
-			\draw (0.85,-1.15) node[right]{$\theta$};
+			%Nodes
+			\node (ROSMaster) at (0,1) [rectangle, draw, minimum height=1cm, minimum width=1cm, 
+			rounded corners=1.25pt, text centered, fill={blue!25}]{ROS Master};
+			\node (Node1) at (-2,-1.5) [rectangle, draw, minimum height=1cm, minimum width=1cm, 
+			rounded corners=1.25pt, text centered, text width=5em, fill={blue!25}]{Node 
+			1\\\footnotesize{Publisher}};
+			\node (Node2) at (2,-1.5) [rectangle, draw, minimum height=1cm, minimum width=1cm, 
+			rounded corners=1.25pt, text centered, text width=5em, fill={blue!25}]{Node 
+			2\\\footnotesize{Subscriber}};
+			\node (Topic) at (0,-3.5) [rectangle, draw, minimum height=1cm, minimum width=2cm, 
+			rounded corners=1.25pt, text centered]{Topic};
 			
-			%Reference system body frame
-			\draw[-latex] (0.05,0) coordinate -- (0.05,3) coordinate node[anchor=west]{$e_{z}$};
-			\draw[-latex] (0.05,0) coordinate -- (-3.05,-0.275) coordinate node[below 
-			left]{$e_{x}$};
-			\draw[-latex] (0.05,0) coordinate -- (0.75,-1.725) coordinate node[below left]{$e_{y}$};
-			\draw (0.05,0.9) node[below right]{$O_{ABC}$};
 			
-			%Hexarotor
-			\node (esacottero) at (0,0) [text 
-			centered]{\includegraphics[scale=0.65]{figure/KestrelEDS-Quadcopter_4.png}};
+			%Messages
+			\node (StrutturaMessaggio) at (-1,-6.5) [rectangle,minimum height=1cm, minimum 
+			width=2cm, fill={red!25}, rounded corners=1.25pt, text width=7.5em]{int number\\double 
+			width\\string description\\etc.};
 			
-			%Omage values (propellers angular velocities)
-			\draw[-latex] (-2.05,0.575) arc (55:-15:0.35cm);
-			\draw[latex-] (-0.1,1.625) arc (-25:-120:0.30cm);
-			\draw[-latex] (2.17,0.97) arc (55:-15:0.35cm);
-			\draw[latex-] (0.6225,-0.1725) arc (-25:-120:0.30cm);
+			%Links
+			\draw[latex-latex] (ROSMaster) -- (0,0) coordinate -| 
+			node[above]{\footnotesize{Registration}} (Node1);
+			\draw[-latex] (ROSMaster) -- (0,0) coordinate -| 
+			node[above]{\footnotesize{Registration}} (Node2);
+			\draw[-latex, gray, densely dashed] (Node1) -- node[above]{\footnotesize{Messages}} 
+			(Node2);
+			\draw[-latex] (Node1) |- node[left]{\footnotesize{Publish}}(Topic);
+			\draw[-latex] (Topic.10) -| node[right]{\footnotesize{Subscribe}}(Node2);
+			\draw[-latex] (1,-3.675) -- (3,-3.675) coordinate;
+			\draw[densely dashed, red!75, text=red!75] (Topic.south) -- (0,-5) coordinate 
+			node[right]{\footnotesize{Message definition}} -| (StrutturaMessaggio.north) node[above 
+			left]{\footnotesize{*.msg}};
 			
-			%Froce vectors
-			\draw[-latex] (-2.065,0.25) coordinate -- (-2.065,0.75) node[left]{$\Omega_1$};
-			\draw[-latex] (-0.29,1.35) coordinate -- (-0.29,1.85) node[left]{$\Omega_2$};
-			\draw[-latex] (2.135,0.675) coordinate -- (2.135,1.175) node[right]{$\Omega_3$};
-			\draw[-latex] (0.36,-0.45) coordinate -- (0.36,0.05) coordinate;
-			\draw (0.85,-0.5225) node[above]{$\Omega_4$};
-			
-			%Inertial reference system
-			\draw[-latex] (-3.05,-3.5) coordinate -- (-3.05,-2) coordinate node[anchor=east]{$Z$};
-			\draw[-latex] (-3.05,-3.5) coordinate -- (-4.05,-3.7125) coordinate node[above 
-			left]{$X$};
-			\draw[-latex] (-3.05,-3.5) coordinate -- (-2.25,-3.725) coordinate node[below 
-			left]{$Y$};
-			\draw (-3.05,-3.4) node[right]{$O_{FI}$};
+			%Bubbles
+			\node (bubble1) at (0,0) [circle, draw, scale=0.3, fill=black]{};
 			
 			\end{tikzpicture}
+		}
+	\end{center}
+\end{figure}
+
+\section{Example \thevarious}
+\stepcounter{various}
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{0.8}{
+			\begin{forest}
+				for tree={
+					font=\sffamily,
+					rounded corners=4pt,
+					grow'=0,
+					inner ysep=8pt,
+					child anchor=west,
+					parent anchor=south,
+					anchor=west,
+					calign=first,
+					edge={rounded corners},
+					edge path={
+						\noexpand\path [draw, \forestoption{edge}]
+						(!u.south west) +(12.5pt,0) |- (.child anchor)\forestoption{edge label};
+					},
+					before typesetting nodes={
+						if n=1
+						{insert before={[,phantom,minimum height=18pt]}}
+						{}
+					},
+					fit=band,
+					s sep=12pt,
+					before computing xy={l=25pt},
+				}
+				[\myfolder{pkg}
+				[\myfolder{config}]
+				[\myfolder{include}
+				[{\myfolder{pkg}}]
+				]
+				[\myfolder{launch}]
+				[\myfolder{src}]
+				[\myfolder{test}]
+				[]
+				]
+			\end{forest}
 		}
 	\end{center}
 \end{figure}
