@@ -1470,3 +1470,102 @@
 		}
 	\end{center}
 \end{figure}
+
+\newpage
+
+\section{Example \thevarious}
+\stepcounter{various}
+
+	
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}
+		\shade[top color=red, bottom color=white, shading angle={135}]
+		[draw=black,fill=red!20,rounded corners=1.2ex,very thick] (1.5,.5) -- ++(0,1) -- ++(1,0.3) 
+		--  ++(3,0) -- ++(1,0) -- ++(0,-1.3) -- (1.5,.5) -- cycle;
+		\draw[very thick, rounded corners=0.5ex,fill=black!20!blue!20!white,thick]  (2.5,1.8) -- 
+		++(1,0.7) -- ++(1.6,0) -- ++(0.6,-0.7) -- (2.5,1.8);
+		\draw[thick]  (4.2,1.8) -- (4.2,2.5);
+		\draw[draw=black,fill=gray!50,thick] (2.75,.5) circle (.5);
+		\draw[draw=black,fill=gray!50,thick] (5.5,.5) circle (.5);
+		\draw[draw=black,fill=gray!80,semithick] (2.75,.5) circle (.4);
+		\draw[draw=black,fill=gray!80,semithick] (5.5,.5) circle (.4);
+		
+		\draw[latex-, semithick, line width=1.25pt] (.5,0) -- (7,0);
+		\draw (7.55,0) node {$x(t)$};
+		\draw (4.25,1.25) node {$m$};
+		
+		%Rappresento le forze
+		\draw[-latex, red, line width=1.25pt] (6.52,1.15) coordinate --(8,1.15) coordinate 
+		node[above]{$bv(t)$};
+		\draw[latex-, blue, line width=1.25pt] (0,1.15) coordinate node[above]{$u(t)$} 
+		--(1.48,1.15) coordinate;
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
+
+
+\section{Example \thevarious}
+\stepcounter{various}
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}
+		
+		% Ground vehicle path
+		\node (vertexGround1) at (0,0) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexGround2) at (1,-3) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexGround3) at (-1,-3.5) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexGround4) at (-2.5,-2.5) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexGround5) at (-2,-2.25) [circle, scale=0.45, fill=black, draw]{};
+		
+		% Linking the ground vehicle vertices
+		\draw[blue] (vertexGround1) -- (vertexGround2);
+		\draw[blue] (vertexGround2) -- (vertexGround3);
+		\draw[blue] (vertexGround3) -- (vertexGround4);
+		\draw[blue] (vertexGround4) -- (vertexGround5);
+		\draw[blue] (vertexGround5) -- (vertexGround1);
+		
+		% UAV path
+		\node (vertexUAV1) at (1.5,-3.75) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexUAV2) at (1.5,-2.25) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexUAV3) at (-1,-4.5) [circle, scale=0.45, fill=black, draw]{};
+		
+		\node (vertexUAV4) at (-1,1) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexUAV5) at (0.5,1.5) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexUAV6) at (-0.35,2) [circle, scale=0.45, fill=black, draw]{};
+		
+		% Linking the UAV vertices
+		\draw[red] (vertexUAV1) -- (vertexUAV2);
+		\draw[red] (vertexUAV2) -- (vertexGround2);
+		\draw[red] (vertexUAV1) -- (vertexGround2);
+		
+		\draw[red] (vertexUAV3) -- (vertexGround3);
+		
+		\draw[red] (vertexUAV4) -- (vertexUAV5);
+		\draw[red] (vertexUAV5) -- (vertexUAV6);
+		\draw[red] (vertexUAV6) -- (vertexUAV4);
+		
+		% Ground vehicle path
+		\node (vertexGround6) at (3,-1.5) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexGround7) at (4,0) [circle, scale=0.45, fill=black, draw]{};
+		\node (vertexGround8) at (4,-3) [circle, scale=0.45, fill=black, draw]{};
+		
+		\draw[blue] (vertexGround6) -- (vertexGround7);
+		\draw[blue] (vertexGround7) -- (vertexGround8);
+		\draw[blue] (vertexGround8) -- (vertexGround6);
+		
+		% UAV vertices
+		\node (vertexUAV7) at (2.25,-1) [circle, scale=0.45, fill=black, draw]{};
+		\draw[red] (vertexUAV7) -- (vertexGround6);
+		
+		% Legend
+		\node (legend) at (7,0) [rectangle, draw, minimum width=2cm, text 
+		width=8em]{\hspace{0.5cm}Targets\\\hspace{0.5cm}GV Path\\\hspace{0.5cm}UAV Path};
+		\node at (5.7,0.5) [circle, scale=0.45, fill=black, draw]{};
+		\draw[blue, line width=1.25pt] (5.55,0) -- (5.8,0);
+		\draw[red, line width=1.25pt] (5.55,-0.45) -- (5.8,-0.45);
+		
+		\end{tikzpicture}
+	\end{center}
+\end{figure}
