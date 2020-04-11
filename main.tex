@@ -86,6 +86,25 @@ decorations.pathreplacing, decorations.pathmorphing, shapes, matrix}
 
 \usepackage{setspace}
 
+% For subfigure
+\usepackage{caption}
+
+% For \bm command
+\usepackage{bm}
+
+% Math in LaTeX
+\usepackage{amsmath}
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+
+% For the graphics part of the thesis
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{array}
+
+% For pdfpages
+\usepackage{pdfpages}
+
 \usepackage{hyperref}  
 \hypersetup{
 	pdftitle={Drawing examples in LaTeX},
