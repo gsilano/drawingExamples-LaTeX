@@ -1,6 +1,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Drawing examples in LaTeX 
 This repository contains a collection of examples created using the `tikzpicture` LaTeX package. The document file has to be meant as a list of examples to help students, researchers, and developers to draw schemes, MATLAB plots, etc., for their own purposes.
