@@ -18,7 +18,7 @@
 \usetikzlibrary{positioning, automata, arrows, quotes, angles, calc, trees, chains,	
 decorations.pathreplacing, decorations.pathmorphing, shapes, matrix}
 
-%For drawing folders
+% === For drawing folders ====================
 \usepackage{forest}
 \definecolor{forange}{RGB}{233,84,32}
 \newcommand\myfolder[2][forange]{%
@@ -86,24 +86,37 @@ decorations.pathreplacing, decorations.pathmorphing, shapes, matrix}
 
 \usepackage{setspace}
 
-% For subfigure
+% === For subfigure ====================
 \usepackage{caption}
 
-% For \bm command
+% === For \bm command ====================
 \usepackage{bm}
 
-% Math in LaTeX
+% === Math in LaTeX ====================
 \usepackage{amsmath}
 \newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
 \newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
 
-% For the graphics part of the thesis
+% === For the graphics part of the thesis ====================
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{array}
 
-% For pdfpages
+% === For pdfpages ====================
 \usepackage{pdfpages}
+
+% === Gantt Chart ====================
+\usepackage{pgfgantt}
+
+%=== Personal commands ====================
+\newcommand{\red}[1]{% Make the text red
+	{\color{red}{#1}}% 
+}
+
+\newcommand{\blue}[1]{% Make the text red
+	{\color{blue}{#1}}% 
+}
+
 
 \usepackage{hyperref}  
 \hypersetup{

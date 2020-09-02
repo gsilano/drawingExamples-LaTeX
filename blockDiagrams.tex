@@ -2296,3 +2296,94 @@
 		}
 	\end{center}
 \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}	
+
+\begin{figure}[h]
+	\begin{center}
+	\scalebox{0.9}{
+		\begin{tikzpicture}
+		
+		% Nodes
+		\node (STLSpecifications) at (0,0) [text centered, draw, rectangle, minimum 
+		width=4.5cm]{STL Specification};
+		\node (ControlSTL) at (0,-1) [text centered, draw, rectangle, minimum 
+		width=4.5cm]{High-level Control for STL};
+		
+		% Links
+		\draw[-latex] (STLSpecifications) -- node[right]{$\varphi$} (ControlSTL);
+		
+		% Multi-robots box
+		\node (MultiRobots-Box) at (0,-0.5) [draw, dashed, gray, minimum height=2cm, minimum 
+		width=5.5cm]{}; 
+		\draw[fill=black] ($ (ControlSTL.south) - (0.03,0.35) $) arc(-180:180:0.03);
+		
+		% Dots
+		\node (Dots1) at (-1.35,-4.0) [text centered]{\dots};
+		\node (Dots2) at (1.40,-4.0) [text centered]{\dots};
+		
+		%%%%%%%%%%%%%%%%%%%
+		% Drone 1
+		\node (TrajectoryGenerator1) at (-2.75,-2.6) [draw, rectangle, text centered, text 
+		width=5em]{Trajectory\\Generator};
+		\node (DroneController1) at (-2.75,-3.95) [draw, rectangle, text centered, text 
+		width=5em]{Drone\\Controller};
+		\node (UAVDynamics1) at (-2.75,-5.35) [draw, rectangle, text centered, text 
+		width=5em]{UAV\\Dynamics};
+		\node (Drone-Box1) at (-2.75,-3.95) [draw, dashed, gray, minimum height=4.1cm, minimum 
+		width=2.35cm]{}; 
+		\node (Drone-Box1-Text) at (-2.75,-6.35) [text centered]{$1$-quadrotor};	
+		
+		% Drone 1 - Links
+		\draw[-latex] (TrajectoryGenerator1) -- node[left]{$\pmb{\xi}_1$} 
+		node[right]{$\pmb{\eta}_1$} (DroneController1);
+		\draw[-latex] (DroneController1) -- node[left]{$\pmb{\Omega}_1$} (UAVDynamics1);	
+		\draw[-latex] (ControlSTL.south) -- ($ (ControlSTL.south) - (0,0.35) $) -- ($ 
+		(ControlSTL.south) - (2.75,0.35) $) -- node[above left]{$^W\mathbf{r}_1$, $\psi_1$} 
+		(TrajectoryGenerator1.north);
+		
+		%%%%%%%%%%%%%%%%%%%
+		% Drone 2
+		\node (TrajectoryGenerator2) at (0,-2.6) [draw, rectangle, text centered, text 
+		width=5em]{Trajectory\\Generator};
+		\node (DroneController2) at (0,-3.95) [draw, rectangle, text centered, text 
+		width=5em]{Drone\\Controller};
+		\node (UAVDynamics2) at (0,-5.35) [draw, rectangle, text centered, text 
+		width=5em]{UAV\\Dynamics};
+		\node (Drone-Box2) at (0,-3.95) [draw, dashed, gray, minimum height=4.1cm, minimum 
+		width=2.35cm]{};
+		\node (Drone-Box2-Text) at (0,-6.35) [text centered]{$2$-quadrotor};		
+		
+		% Drone 2 - Links
+		\draw[-latex] (TrajectoryGenerator2) -- node[left]{$\pmb{\xi}_2$} 
+		node[right]{$\pmb{\eta}_2$} (DroneController2);
+		\draw[-latex] (DroneController2) -- node[left]{$\pmb{\Omega}_2$}(UAVDynamics2);	 
+		\draw[-latex] ($ (ControlSTL.south) - (0,0.35) $) -- node[left]{$^W\mathbf{r}_2$, $\psi_2$} 
+		(TrajectoryGenerator2.north);
+		
+		%%%%%%%%%%%%%%%%%%%
+		% Drone N
+		\node (TrajectoryGeneratorN) at (2.75,-2.6) [draw, rectangle, text centered, text 
+		width=5em]{Trajectory\\Generator};
+		\node (DroneControllerN) at (2.75,-3.95) [draw, rectangle, text centered, text 
+		width=5em]{Drone\\Controller};
+		\node (UAVDynamicsN) at (2.75,-5.35) [draw, rectangle, text centered, text 
+		width=5em]{UAV\\Dynamics};	
+		\node (Drone-BoxN) at (2.75,-3.95) [draw, dashed, gray, minimum height=4.1cm, minimum 
+		width=2.35cm]{}; 	
+		\node (Drone-BoxN-Text) at (2.75,-6.35) [text centered]{$n$-quadrotor};
+		
+		% Drone N - Links
+		\draw[-latex] (TrajectoryGeneratorN) -- node[left]{$\pmb{\xi}_n$} 
+		node[right]{$\pmb{\eta}_n$} (DroneControllerN);
+		\draw[-latex] (DroneControllerN) -- node[left]{$\pmb{\Omega}_n$} (UAVDynamicsN);	
+		\draw[-latex] ($ (ControlSTL.south) - (0,0.35) $) -- ($ (ControlSTL.south) + (2.75,-0.35) 
+		$) -- node[above right]{$^W\mathbf{r}_n$, $\psi_n$} (TrajectoryGeneratorN.north);
+		
+		\end{tikzpicture}
+		}
+	\end{center}
+\end{figure}
