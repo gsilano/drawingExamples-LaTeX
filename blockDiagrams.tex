@@ -2200,7 +2200,7 @@
 
 \begin{figure}[h]
 	\begin{center}
-		\scalebox{0.7}{
+		\scalebox{0.9}{
 			\begin{tikzpicture}
 			
 			%%%% Blocks
@@ -2384,6 +2384,98 @@
 		$) -- node[above right]{$^W\mathbf{r}_n$, $\psi_n$} (TrajectoryGeneratorN.north);
 		
 		\end{tikzpicture}
+		}
+	\end{center}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Example \theblockDiagram}
+\stepcounter{blockDiagram}	
+
+\begin{figure}[h]
+	\begin{center}
+		\scalebox{1}{
+			\begin{tikzpicture}
+			
+			%%%%%%%%%%%%%%%%%%%%% Motion Planner
+			% Ground station block
+			\node (MultiRobots-Box) at (0,0.2) [fill=gray!3,rounded corners, draw=black!70, densely 
+			dotted, minimum height=1.7cm, minimum width=2.75cm]{}; 
+			
+			% Motion Planner
+			\node (MotionPlanner) at (0,0) [text centered, fill=white, draw, rectangle, minimum 
+			width=1.5cm, text width=5.5em]{Motion\\Planner};
+			
+			% Links
+			\draw[-latex] ($(MotionPlanner) - (1.5,0)$) -- node[above]{$\varphi$} (MotionPlanner);
+			
+			% Multi-robots box
+			\draw[fill=black] ($ (MotionPlanner.east) + (0.5,0) $) arc(-180:180:0.03);
+			\node (GroundStation) at (0,0.75) [text centered]{\small Ground Station};
+			
+			%%%%%%%%%%%%%%%%%%%
+			% Drone 1
+			\node (Drone-Box1) at (5.15,2.15) [fill=gray!3,rounded corners, draw=black!70, densely 
+			dotted, minimum height=1.7cm, minimum width=5.45cm]{}; 
+			\node (TrackingController1) at (3.65,1.95) [fill=white, draw, rectangle, text centered, 
+			text width=5em]{Tracking\\Controller};
+			\node (UAVPlant1) at (6.65,1.95) [fill=white, draw, rectangle, text centered, text 
+			width=5em]{UAV\\Plant};
+			\node (Drone-Box1-Text) at (5.1,2.7) [text centered]{\small $1$\textsuperscript{st} 
+				quad-rotor};	
+			
+			% Drone 1 - Links
+			\draw[-latex] (TrackingController1) -- node[above]{$\omega_{d_1}$} 
+			node[below]{$T_{d_1}$} 
+			(UAVPlant1);
+			\draw[-latex] (MotionPlanner.east) -- ($ (MotionPlanner.east) + (0.525,0) $) 
+			-- ($ (MotionPlanner.east) + (0.525,1.95) $) -- node[above]{$\mathbf{x}^\star_1, 
+				\mathbf{u}^\star_1$} node[below]{$\psi_1$} (TrackingController1.west);
+			
+			%%%%%%%%%%%%%%%%%%%
+			% Drone 2
+			\node (Drone-Box2) at (5.15,0.2) [fill=gray!3,rounded corners, draw=black!70, densely 
+			dotted, minimum height=1.7cm, minimum width=5.45cm]{};
+			\node (TrackingController2) at (3.65,0) [fill=white, draw, rectangle, text centered, 
+			text 
+			width=5em]{Tracking\\Controller};
+			\node (UAVPlant2) at (6.65,0) [fill=white, draw, rectangle, text centered, text 
+			width=5em]{UAV\\Plant};
+			\node (Drone-Box2-Text) at (5.15,0.75) [text centered]{\small $2$\textsuperscript{nd} 
+				quad-rotor};		
+			
+			% Drone 2 - Links
+			\draw[-latex] (TrackingController2) -- node[above]{$\omega_{d_2}$} 
+			node[below]{$T_{d_2}$} 
+			(UAVPlant2);	 
+			\draw[-latex] ($ (MotionPlanner.east) + (0.525,0) $) -- 
+			node[above]{$\mathbf{x}^\star_2, \mathbf{u}^\star_2$} node[below]{$\psi_2$} 
+			(TrackingController2.west);
+			
+			%%%%%%%%%%%%%%%%%%%
+			% Drone J
+			\node (Drone-BoxN) at (5.15,-1.75) [fill=gray!3,rounded corners, draw=black!70, densely 
+			dotted, minimum height=1.7cm, minimum width=5.45cm]{};
+			% Dots
+			\node (Dots2) at (5.15,-0.8) [text centered]{\dots};
+			\node (TrackingControllerN) at (3.65,-1.95) [fill=white, draw, rectangle, text 
+			centered, 
+			text width=5em]{Tracking\\Controller};
+			\node (UAVPlantN) at (6.65,-1.95) [fill=white, draw, rectangle, text centered, text 
+			width=5em]{UAV\\Plant}; 	
+			\node (Drone-BoxN-Text) at (5.15,-1.2) [text centered]{\small $q$\textsuperscript{th} 
+				quad-rotor};
+			
+			% Drone J - Links
+			\draw[-latex] (TrackingControllerN) -- node[above]{$\omega_{d_q}$} 
+			node[below]{$T_{d_q}$} 
+			(UAVPlantN);
+			\draw[-latex] ($ (MotionPlanner.east) + (0.525,0) $) -- ($ 	
+			(MotionPlanner.east) + (0.525,-1.95) $) -- node[above]{$\mathbf{x}^\star_q, 
+				\mathbf{u}^\star_q$} node[below]{$\psi_q$} (TrackingControllerN.west);
+			
+			\end{tikzpicture}
 		}
 	\end{center}
 \end{figure}
